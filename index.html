@@ -1354,6 +1354,24 @@
   }
 
 </style>
+<!-- Facebook Pixel -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1256640159560018');
+fbq('track', 'PageView');
+</script>
+<noscript>
+<img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1256640159560018&ev=PageView&noscript=1"/>
+</noscript>
+<!-- End Facebook Pixel -->
 </head>
 <body>
 
@@ -1371,7 +1389,7 @@
     <p class="hero-eyebrow2">Desvendando o Jogo da Sedução</p>
     <p class="hero-sub">Nunca mais seja ignorado no Instagram</p>
     <p class="hero-desc">Descubra a psicologia por trás das mensagens que <strong>realmente recebem resposta</strong> — com mais de 50 mensagens prontas, testadas e aprovadas.</p>
-    <a href="https://pay.kiwify.com.br/PnUYJTM" target="_blank" class="btn-primary">Quero o acesso agora →</a>
+    <a href="#oferta" onclick="event.preventDefault();document.getElementById('oferta').scrollIntoView({behavior:'smooth'})" class="btn-primary">Quero o acesso agora →</a>
     <p class="guarantee-note">✓ Entrega imediata &nbsp;·&nbsp; ✓ 7 dias de garantia &nbsp;·&nbsp; ✓ Pagamento seguro</p>
   </div>
 </section>
@@ -1398,7 +1416,7 @@
     <span class="section-label">A descoberta</span>
     <h2>Existe um <em>código</em> por trás<br>de toda resposta</h2>
     <p>Mulheres não respondem quem é mais bonito ou quem tem mais seguidores. Respondem quem sabe <strong>como abrir uma conversa</strong> com criatividade, confiança e timing certo. Isso é uma habilidade. E habilidade se aprende.</p>
-    <a href="#oferta" class="btn-secondary">Ver o método completo →</a>
+    <a href="#oferta" onclick="event.preventDefault();document.getElementById('oferta').scrollIntoView({behavior:'smooth'})" class="btn-secondary">Ver o método completo →</a>
   </div>
 </section>
 
@@ -1474,7 +1492,7 @@
     <div class="msg-blur"></div>
     <p class="msg-unlock">Desbloqueie as <strong>50+ mensagens completas</strong> por apenas R$27</p>
     <br>
-    <a href="https://pay.kiwify.com.br/PnUYJTM" target="_blank" class="btn-primary">Quero acesso completo →</a>
+    <a href="#oferta" onclick="event.preventDefault();document.getElementById('oferta').scrollIntoView({behavior:'smooth'})" class="btn-primary">Quero acesso completo →</a>
   </div>
 </section>
 
@@ -1662,7 +1680,7 @@
   <div class="container fade-in">
     <h2>A próxima resposta<br>pode vir <em>hoje</em>.</h2>
     <p>O guia está pronto. Você acessa em segundos. O que vai fazer com isso depende só de você.</p>
-    <a href="https://pay.kiwify.com.br/PnUYJTM" target="_blank" class="btn-primary">Quero o Código da Atração →</a>
+    <a href="#oferta" onclick="event.preventDefault();document.getElementById('oferta').scrollIntoView({behavior:'smooth'})" class="btn-primary">Quero o Código da Atração →</a>
     <p style="font-size:13px;color:var(--gray);margin-top:16px;">✓ R$27 · Acesso imediato · 7 dias de garantia</p>
   </div>
 </section>
@@ -1678,7 +1696,7 @@
     <div class="sticky-price">R$27</div>
     <div class="sticky-text">Acesso imediato · 7 dias de garantia</div>
   </div>
-  <a href="https://pay.kiwify.com.br/PnUYJTM" target="_blank" class="btn-primary">Comprar agora →</a>
+  <a href="#oferta" onclick="event.preventDefault();document.getElementById('oferta').scrollIntoView({behavior:'smooth'})" class="btn-primary">Comprar agora →</a>
 </div>
 
 <script>
@@ -1722,5 +1740,37 @@
   });
 </script>
 
+
+<script>
+// Fire ViewContent when offer section enters view
+const offerSection = document.getElementById('oferta');
+if (offerSection) {
+  const offerObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        fbq('track', 'ViewContent', {
+          content_name: 'O Código da Atração',
+          content_category: 'Guia Digital',
+          value: 27.00,
+          currency: 'BRL'
+        });
+        offerObserver.disconnect();
+      }
+    });
+  }, { threshold: 0.5 });
+  offerObserver.observe(offerSection);
+}
+
+// Fire InitiateCheckout on buy button click
+document.querySelectorAll('a[href*="kiwify"]').forEach(btn => {
+  btn.addEventListener('click', function() {
+    fbq('track', 'InitiateCheckout', {
+      content_name: 'O Código da Atração',
+      value: 27.00,
+      currency: 'BRL'
+    });
+  });
+});
+</script>
 </body>
 </html>
